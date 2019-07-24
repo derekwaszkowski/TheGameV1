@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class FlyingFishView extends View {
-
+//
     private Bitmap fish[] = new Bitmap[2];
     private Bitmap backgroundImage;
     private Paint scorePaint = new Paint();
@@ -35,6 +35,10 @@ public class FlyingFishView extends View {
     private int redX, redY, redSpeed = 25;
     private Paint redPaint = new Paint();
 
+    private int alienX, alienY, alienSpeed =25;
+    private Bitmap alien[] = new Bitmap[3];
+    private Paint clapPaint = new Paint();
+
     private boolean touch = false;
 
     public FlyingFishView(Context context) {
@@ -43,10 +47,19 @@ public class FlyingFishView extends View {
 
         super(context);
 
-        fish[0] = BitmapFactory.decodeResource(getResources(), R.drawable.fish1);
-        fish[1] = BitmapFactory.decodeResource(getResources(), R.drawable.fish2);
+        fish[0] = BitmapFactory.decodeResource(getResources(), R.drawable.man1);
+        fish[1] = BitmapFactory.decodeResource(getResources(), R.drawable.man3);
+        alien[0] = BitmapFactory.decodeResource(getResources(),R.drawable.alien2_s);
+        alien[1] = BitmapFactory.decodeResource(getResources(),R.drawable.ufo_s);
+        alien[2] = BitmapFactory.decodeResource(getResources(),R.drawable.cop1_s);
 
-        backgroundImage = BitmapFactory.decodeResource(getResources(), R.drawable.background);
+
+
+
+
+
+
+        backgroundImage = BitmapFactory.decodeResource(getResources(), R.drawable.a51_90);
 
         yellowPaint.setColor(Color.YELLOW);
         yellowPaint.setAntiAlias(false);
@@ -62,6 +75,11 @@ public class FlyingFishView extends View {
         scorePaint.setTextSize(70);
         scorePaint.setTypeface(Typeface.DEFAULT_BOLD);
         scorePaint.setAntiAlias(true);
+
+        clapPaint.setColor(Color.WHITE);
+        clapPaint.setTextSize(70);
+        clapPaint.setTypeface(Typeface.DEFAULT_BOLD);
+        clapPaint.setAntiAlias(true);
 
         life[0] = BitmapFactory.decodeResource(getResources(), R.drawable.hearts);
         life[1] = BitmapFactory.decodeResource(getResources(), R.drawable.heart_grey);
@@ -115,9 +133,30 @@ public class FlyingFishView extends View {
         {
             yellowX = canvasWidth + 21;
             yellowY = (int) Math.floor(Math.random()*(maxFishY-minFishY)) + minFishY;
-        }
 
-        canvas.drawCircle(yellowX, yellowY, 25, yellowPaint);
+        }
+        canvas.drawBitmap(alien[1], yellowX, yellowY, null);
+
+        //canvas.drawText("Clap dem cheeks", yellowX,yellowY,clapPaint);
+
+        //canvas.drawCircle(yellowX, yellowY, 25, yellowPaint);
+
+        //************************************************************************
+        alienY = alienX - alienSpeed;
+
+        if (hitBallChecker(alienX,alienY))
+        {
+            score  = score +100;
+            alienX = -100;
+        }
+        if (alienX < 0)
+        {
+            alienX = canvasWidth +21;
+            alienY = (int) (Math.floor(Math.random()*(maxFishY-minFishY)) + minFishY);
+        }
+        //canvas.drawBitmap(alien[0], alienX, alienY, null);
+        //canvas.drawText("Clap", alienX,alienY,clapPaint);
+
 
         greenX  = greenX - greenSpeed;
 
@@ -132,8 +171,9 @@ public class FlyingFishView extends View {
             greenX = canvasWidth + 21;
             greeeY = (int) Math.floor(Math.random()*(maxFishY-minFishY)) + minFishY;
         }
+        canvas.drawBitmap(alien[0], greenX, greeeY, null);
 
-        canvas.drawCircle(greenX, greeeY, 25, greenPaint);
+        //canvas.drawCircle(greenX, greeeY, 25, greenPaint);
 
         redX  = redX - redSpeed;
 
@@ -157,8 +197,8 @@ public class FlyingFishView extends View {
             redX = canvasWidth + 21;
             redY = (int) Math.floor(Math.random()*(maxFishY-minFishY)) + minFishY;
         }
-
-        canvas.drawCircle(redX, redY, 30, redPaint);
+        canvas.drawBitmap(alien[2], redX, redY, null);
+        //canvas.drawCircle(redX, redY, 30, redPaint);
 
         canvas.drawText("Score: " + score, 20, 60, scorePaint);
 
