@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash"
+    android:background="@drawable/dessert_background"
     tools:context=".GameOverActivity">
 
     <TextView
@@ -16,7 +16,8 @@
         android:layout_marginTop="80dp"
         android:text="Game Over"
         android:textAlignment="center"
-        android:textColor="@color/colorAccent"
+        android:textColor="#000"
+        android:layout_marginBottom="400dp"
         android:textSize="70dp"
         android:textStyle="bold"/>
     
@@ -26,10 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/gaveOver"
+        android:paddingTop="50dp"
         android:padding="10dp"
         android:text="Play Again"
         android:textAllCaps="false"
-        android:background="@color/colorAccent"
+        android:background="#000"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
 
@@ -45,8 +47,8 @@
         android:layout_marginBottom="341dp"
         android:text="Score"
         android:textStyle="bold"
-        android:textSize="25sp"
-        android:textColor="@color/colorAccent"
+        android:textSize="40sp"
+        android:textColor="#302E2E"
         android:textAlignment="center"/>
 
 </RelativeLayout>
