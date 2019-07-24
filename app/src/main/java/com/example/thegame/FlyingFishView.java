@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class FlyingFishView extends View {
-
+//
     private Bitmap fish[] = new Bitmap[2];
     private Bitmap backgroundImage;
     private Paint scorePaint = new Paint();
