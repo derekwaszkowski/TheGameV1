@@ -15,6 +15,7 @@ public class GameOverActivity extends AppCompatActivity {
     private TextView  DisplayScore;
     private int score;
     private int lastScore, best1, best2, best3;
+    //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
